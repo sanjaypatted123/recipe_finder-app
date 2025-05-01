@@ -1,5 +1,4 @@
-const apikey='f1624b52d6f04943872da438a4964587';    //apikey taken from spoonacular website
-
+const apikey='f1624b52d6f04943872da438a4964587';    
 //just accessing all html elements for dom actions
 const button=document.getElementById('search-btn');  
 const input=document.getElementById('ing-input');
@@ -16,26 +15,21 @@ button.addEventListener('click',function () {
     fetch(url)
     .then(function (response) {
         return response.json();
-
-        
     })
     .then(function (data) {
         if(data.length===0){
+            alert('ingredient is not valid or no recipe');
             result.innerHTML='No recipe found';
             return;
-
         }
         const recipe =data[0];
         result.innerHTML = `
         <h3>${recipe.title}</h3>
         <img src="${recipe.image}" alt="${recipe.title}" width="250">
     `;
-        
     })
     .catch(function () {
         result.innerHTML='Something went wrong.please try again';
-
-        
     });
     
 });
